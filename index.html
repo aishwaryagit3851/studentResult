@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+          body {
+            background-image: url('taskimg1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 0px;
+        }
+          .checkresult {
+            background-color: rgba(51, 44, 45, 0.479);
+            border: none;
+            height: 360px;
+            width: 33%;
+            margin: 2% 0% 0% 33%;
+            border-radius: 20px;
+            box-shadow: 10px 10px 5px rgba(128, 128, 128, 0.418);
+            padding-top: 1%;
+        }
+        h2{
+            font-size: 3vw;
+            text-align: center;
+            margin: 1% 0% 1% 0%;
+        }
+        .inner-login {
+            display: flex;
+            flex-direction: column;
+            padding: 3% 0% 0% 13%;
+        }
+        input {
+            margin: 2% 0% 2% 0%;
+            padding-left: 2%;
+            font-size: 1vw;
+            height: 40px;
+            width: 80%;
+            border: none;
+            border-radius: 5px;
+
+        }
+
+        button {
+            width: 83%;
+            height: 40px;
+            padding: 2%;
+            margin-top: 4%;
+            border: none;
+            background-color: white;
+            border-radius: 5px;
+            transition: 0.1s;
+        }
+
+        button:hover {
+            background-color: black;
+           color: white;
+        }
+
+        label {
+            font-size: 2vw;
+        }
+        a{
+           
+            color: black;
+            font-size: 2vw;
+            padding: 2% 2% 2% 2%;
+            
+           
+        }
+        .footer{
+            display: flex;
+            flex-direction: row;
+            margin: 0% 0% 0% 23%;
+        }
+    </style>
+</head>
+<body>
+    <h2>Online Result Display</h2>
+    <hr color="black" width="70%"text-align="center">
+    <div class="checkresult">
+        <h2>Check Result here</h2>
+        <div class="inner-login">
+            <form method="post" action="ShowResult.php">
+            <label>Enter Roll Number</label><br>
+            <input type="number" name="rollno" placeholder="Roll Numner" required>
+            <br>
+            <label>Password</label><br>
+            <input type="password" name="Password" placeholder="Password" required>
+            <br>
+            <button>Submit</button>
+
+        </form>
+    </div>
+          
+</div>
+<div class="footer">
+        <a href="studentdetails.php">Student Registration</a>
+        <a href="facultyreg.php">FacultyRegistration</a>
+        <a href="facultylog.php">Faculty Login</a>
+    </div>
+    <script>
+        function getStudent(val) {
+            $.ajax({
+            type: "POST",
+            url: "Result.php",
+            data:'rollno='+val,
+            success: function(data){
+                $("#ShowResults").html(data);
+                
+            }
+            });
+        
+        }
+            </script>
+</body>
+</html>
